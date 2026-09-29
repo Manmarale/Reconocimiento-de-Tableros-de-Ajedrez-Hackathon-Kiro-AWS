@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Comprobación B8 antes de una tarea",
+      "trigger": "PreTaskExec",
+      "description": "Recuerda validar la trazabilidad, B8, accesibilidad, procesamiento íntegramente local y política conservadora de flechas antes de iniciar cada tarea del spec ONCE; no bloquea ni ejecuta comandos.",
+      "action": {
+        "type": "agent",
+        "prompt": "Antes de iniciar esta tarea del transcriptor ONCE, consulta .kiro/steering/accesibilidad-ajedrez-once.md y el spec transcriptor-ajedrez-once. Confirma la trazabilidad requisito→diseño→tarea, mantiene el B8 estricto y el JSON validado antes de formatear, no inventa datos visuales ni flechas ambiguas, conserva WCAG 2.2 AA por teclado/lector de pantalla y ejecuta todo el análisis localmente sin transmitir imagen, derivados, JSON, texto ni metadatos."
+      }
+    }
+  ]
+}

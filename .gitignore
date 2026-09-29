@@ -1,0 +1,12 @@
+# Secretos de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos del sistema y dependencias locales
+.DS_Store
+node_modules/
+
+# Registros y artefactos temporales
+*.log
+coverage/

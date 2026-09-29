@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0-b8-once",
+  "coordenadas": {
+    "columnas": ["a", "b", "c", "d", "e", "f", "g", "h"],
+    "filasBraille": {
+      "1": "⠂",
+      "2": "⠆",
+      "3": "⠒",
+      "4": "⠲",
+      "5": "⠢",
+      "6": "⠖",
+      "7": "⠶",
+      "8": "⠦"
+    }
+  },
+  "piezas": {
+    "orden": ["R", "D", "T", "A", "C", "P"],
+    "nombresAudio": {
+      "R": { "singular": "Rey", "plural": "Reyes" },
+      "D": { "singular": "Dama", "plural": "Damas" },
+      "T": { "singular": "Torre", "plural": "Torres" },
+      "A": { "singular": "Alfil", "plural": "Alfiles" },
+      "C": { "singular": "Caballo", "plural": "Caballos" },
+      "P": { "singular": "Peón", "plural": "Peones" }
+    }
+  },
+  "resaltados": {
+    "ordenColores": ["amarillo", "rojo"]
+  },
+  "flechas": {
+    "conectores": {
+      "recto": "-",
+      "diagonal": "⠪⠒",
+      "curvo": "⠒⠕"
+    }
+  }
+}
