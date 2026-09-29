@@ -1,6 +1,9 @@
 # Tareas — Transcriptor de diagramas de ajedrez ONCE
 
-> No iniciar una tarea de implementación sin releer los requisitos y el diseño vinculados. Las prioridades B8, JSON validado, WCAG 2.2 AA, privacidad local y rechazo de flechas ambiguas no admiten excepciones. Las tareas se ejecutan en orden salvo indicación contraria.
+## Ajuste Sprint 1.5
+La privacidad local del plan inicial queda sustituida por privacidad híbrida con consentimiento: UI e historial offline; Gemini únicamente tras aceptación explícita y mediante clave de entorno del servidor. Las tareas de extracción local se implementan como endpoint local seguro, consentimiento revocable, validación y un único reintento.
+
+> No iniciar una tarea de implementación sin releer los requisitos y el diseño vinculados. Las prioridades B8, JSON validado, WCAG 2.2 AA, privacidad híbrida con consentimiento y rechazo de flechas ambiguas no admiten excepciones. Las tareas se ejecutan en orden salvo indicación contraria.
 
 - [ ] 1. Confirmar el alcance y la licencia/uso permitido del material B8 proporcionado; registrar la versión de `signografia.json` y las decisiones de producto pendientes. _R1–R7, RNF2–RNF4_
 - [ ] 2. Inicializar una aplicación web offline-first y su pipeline local de validación; bloquear endpoints de análisis, telemetría y cualquier credencial o dependencia de proveedor remoto. _R2, RNF2, RNF4_

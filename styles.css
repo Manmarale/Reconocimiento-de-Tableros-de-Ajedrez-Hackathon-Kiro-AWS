@@ -1,47 +1,185 @@
 :root {
-  color-scheme: light dark;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.5;
+  --fg: #12130f;
+  --bg: #ffffff;
+  --acento: #1a4d2e;
+  --acento-fg: #ffffff;
+  --borde: #4a4a4a;
+  --alerta-bg: #fdecea;
+  --alerta-borde: #a61b1b;
+  --foco: #b8860b;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  min-width: 20rem;
-  background: Canvas;
-  color: CanvasText;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.5;
 }
 
-.site-header,
-main {
-  width: min(100% - 2rem, 70rem);
-  margin-inline: auto;
-}
-
-.site-header {
-  padding-block: 2rem 1rem;
-  border-bottom: 0.125rem solid currentColor;
-}
-
-main {
-  padding-block: 2rem;
+/* Foco visible siempre (WCAG 2.4.7) */
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 2px;
 }
 
 .skip-link {
   position: absolute;
-  top: -5rem;
-  left: 1rem;
-  z-index: 1;
-  padding: 0.75rem 1rem;
-  background: Canvas;
-  color: CanvasText;
-  border: 0.125rem solid currentColor;
+  left: -9999px;
+  top: 0;
+  background: var(--acento);
+  color: var(--acento-fg);
+  padding: 0.5rem 1rem;
+  z-index: 10;
 }
-
 .skip-link:focus {
-  top: 1rem;
+  left: 0.5rem;
+  top: 0.5rem;
 }
 
-:focus-visible {
-  outline: 0.1875rem solid Highlight;
-  outline-offset: 0.1875rem;
+.site-header {
+  background: var(--acento);
+  color: var(--acento-fg);
+  padding: 1.25rem 1.5rem;
+}
+.site-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+}
+.site-header p {
+  margin: 0;
+}
+
+main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  border-bottom: 2px solid var(--acento);
+  padding-bottom: 0.25rem;
+}
+
+.campo {
+  margin-bottom: 1.25rem;
+}
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.ayuda {
+  margin: 0 0 0.5rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+input[type="file"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.55rem 1rem;
+  min-height: 44px; /* objetivo táctil WCAG 2.5.8 */
+  border: 1px solid var(--acento);
+  background: var(--acento);
+  color: var(--acento-fg);
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #14401f;
+}
+
+.estado {
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.alerta {
+  background: var(--alerta-bg);
+  border: 2px solid var(--alerta-borde);
+  color: #6b0000;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.resultado {
+  margin-bottom: 1.5rem;
+}
+.salida {
+  white-space: pre-wrap;
+  background: #f4f4ef;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-family: "DejaVu Sans", "Noto Sans Symbols", monospace;
+}
+
+.historial {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.historial-item {
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.historial-item h3 {
+  margin: 0 0 0.25rem;
+}
+.historial-acciones {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.dialogo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.dialogo[hidden] {
+  display: none;
+}
+.dialogo-panel {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 32rem;
+  width: 100%;
+}
+.dialogo-acciones {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+#consentir-rechazar {
+  background: var(--bg);
+  color: var(--acento);
 }

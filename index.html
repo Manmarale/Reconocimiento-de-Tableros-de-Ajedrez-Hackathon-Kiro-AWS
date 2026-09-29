@@ -13,13 +13,80 @@
       <h1>Transcriptor de Ajedrez ONCE</h1>
       <p>Braille Unicode B8 y texto accesible para estudiar diagramas de ajedrez.</p>
     </header>
+
     <main id="contenido" tabindex="-1">
-      <section aria-labelledby="bienvenida-titulo">
-        <h2 id="bienvenida-titulo">Base del proyecto preparada</h2>
-        <p id="startup-status" role="status" aria-live="polite">Cargando estructura base.</p>
-        <p>La selección de imágenes, el consentimiento para Gemini y las transcripciones se incorporarán en las tareas siguientes.</p>
+      <section aria-labelledby="entrada-titulo">
+        <h2 id="entrada-titulo">Transcribir un diagrama</h2>
+        <form id="form-transcribir" novalidate>
+          <div class="campo">
+            <label for="archivo-imagen">Imagen del tablero de ajedrez</label>
+            <p id="ayuda-archivo" class="ayuda">
+              Formatos aceptados: PNG o JPG. La interfaz y el historial funcionan sin conexión.
+              Para transcribir, la imagen se enviará a Google Gemini solo si das tu consentimiento.
+            </p>
+            <input
+              type="file"
+              id="archivo-imagen"
+              name="archivo-imagen"
+              accept="image/png,image/jpeg"
+              aria-describedby="ayuda-archivo"
+            />
+          </div>
+          <div class="campo">
+            <label for="nombre-opcional">Nombre para el historial (opcional)</label>
+            <input type="text" id="nombre-opcional" name="nombre-opcional" autocomplete="off" />
+          </div>
+          <button type="submit" id="btn-transcribir">Transcribir</button>
+        </form>
+
+        <p id="estado" class="estado" role="log" aria-live="polite"></p>
+        <div id="alerta" class="alerta" role="alert" tabindex="-1" hidden></div>
+      </section>
+
+      <section id="seccion-resultados" aria-labelledby="resultados-titulo" hidden>
+        <h2 id="resultados-titulo">Resultado de la transcripción</h2>
+
+        <div class="resultado">
+          <h3 id="braille-titulo">Braille Unicode B8</h3>
+          <pre id="salida-braille" class="salida" aria-labelledby="braille-titulo" tabindex="0"></pre>
+          <button type="button" id="copiar-braille" aria-describedby="braille-titulo">Copiar Braille</button>
+        </div>
+
+        <div class="resultado">
+          <h3 id="audio-titulo">Texto para lector de pantalla</h3>
+          <pre id="salida-audio" class="salida" aria-labelledby="audio-titulo" tabindex="0"></pre>
+          <button type="button" id="copiar-audio" aria-describedby="audio-titulo">Copiar texto</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="historial-titulo">
+        <h2 id="historial-titulo">Partidas anteriores</h2>
+        <p id="historial-vacio">Aún no hay transcripciones guardadas.</p>
+        <ul id="lista-historial" class="historial"></ul>
+        <button type="button" id="borrar-todo" hidden>Borrar todo el historial</button>
       </section>
     </main>
+
+    <!-- Diálogo de consentimiento accesible -->
+    <div
+      id="dialogo-consentimiento"
+      class="dialogo"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consentimiento-titulo"
+      aria-describedby="consentimiento-texto"
+      hidden
+    >
+      <div class="dialogo-panel">
+        <h2 id="consentimiento-titulo">Consentimiento para transcribir</h2>
+        <p id="consentimiento-texto">Para transcribir esta imagen se enviará a Google Gemini. ¿Aceptas?</p>
+        <div class="dialogo-acciones">
+          <button type="button" id="consentir-aceptar">Acepto, enviar la imagen</button>
+          <button type="button" id="consentir-rechazar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
     <noscript>Esta aplicación necesita JavaScript para transcribir los diagramas.</noscript>
     <script type="module" src="app.js"></script>
   </body>

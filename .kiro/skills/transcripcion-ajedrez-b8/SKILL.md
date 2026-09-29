@@ -17,7 +17,7 @@ metadata:
 1. B8 estricto como fuente de verdad oficial ONCE.
 2. JSON validado antes de salida o persistencia, con un único reintento.
 3. WCAG 2.2 AA y operación completa con teclado y lector de pantalla.
-4. Análisis, JSON y transcripciones estrictamente locales: nunca salen del dispositivo.
+4. Modo híbrido: interfaz e historial locales; una imagen solo se envía a Gemini tras consentimiento explícito, mediante endpoint local y con la clave exclusiva del entorno del servidor.
 5. Flecha ambigua igual a error recuperable, nunca a una conjetura.
 
 ## Contexto obligatorio

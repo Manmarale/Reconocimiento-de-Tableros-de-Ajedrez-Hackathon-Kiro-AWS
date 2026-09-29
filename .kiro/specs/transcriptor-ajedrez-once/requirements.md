@@ -1,7 +1,10 @@
 # Requisitos — Transcriptor de diagramas de ajedrez ONCE
 
+## Decisión Sprint 1.5 — privacidad híbrida
+Esta decisión sustituye las referencias previas a extracción enteramente local: la interfaz, ajustes, historial, lectura y copia de transcripciones funcionan offline y no transmiten datos. Para transcribir una imagen nueva se solicita primero el consentimiento accesible «Para transcribir esta imagen se enviará a Google Gemini. ¿Aceptas?». Solo una aceptación afirmativa, registrada como `consentimiento_gemini: true`, permite enviar la imagen al endpoint local de la aplicación y de ahí a Gemini. El rechazo anuncia «Transcripción cancelada. La imagen no se ha enviado.». La preferencia se puede revocar y la clave permanece exclusivamente en `GEMINI_API_KEY` del entorno del servidor.
+
 ## Principios rectores
-El producto solo es válido si cumple simultáneamente: B8 estricto como estándar oficial ONCE; JSON intermedio validado con un único reintento; WCAG 2.2 AA; procesamiento y datos locales; y fallo recuperable ante flechas ambiguas. Ningún principio puede sacrificarse para obtener una transcripción aparente.
+El producto solo es válido si cumple simultáneamente: B8 estricto como estándar oficial ONCE; JSON intermedio validado con un único reintento; WCAG 2.2 AA; privacidad híbrida con consentimiento; y fallo recuperable ante flechas ambiguas. Ningún principio puede sacrificarse para obtener una transcripción aparente.
 
 ## Alcance
 Aplicación web minimalista que recibe una imagen de un tablero de ajedrez y, sin transmitirla fuera del dispositivo, genera una adaptación Braille Unicode B8 compatible con Ebrai y una adaptación textual para lector de pantalla. Incluye historial local accesible. El material B8 y los seis tableros Braille y cuatro diagramas Audio aportados constituyen el oráculo de aceptación.

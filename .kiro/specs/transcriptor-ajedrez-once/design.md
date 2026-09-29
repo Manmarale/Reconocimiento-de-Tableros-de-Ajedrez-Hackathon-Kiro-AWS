@@ -1,7 +1,10 @@
 # Diseño — Transcriptor de diagramas de ajedrez ONCE
 
+## Decisión Sprint 1.5 — flujo híbrido
+Esta decisión sustituye el runtime de visión local de la primera planificación. El navegador conserva interfaz, consentimiento e historial locales; una imagen nueva solo se envía tras consentimiento afirmativo a `POST /api/transcribe` del servidor local. El servidor carga `GEMINI_API_KEY` desde el entorno, llama a `gemini-3.5-flash-lite` y devuelve exclusivamente la extracción JSON. La clave no se expone al navegador. El cliente valida la extracción, reintenta una vez y formatea localmente el Braille B8 y Audio.
+
 ## Prioridades de arquitectura
-El diseño prioriza, en este orden no negociable: fidelidad B8, validación antes de salida, accesibilidad WCAG 2.2 AA, privacidad local y rechazo de flechas ambiguas. El objetivo no es maximizar transcripciones: es producir únicamente transcripciones fiables y accesibles.
+El diseño prioriza, en este orden no negociable: fidelidad B8, validación antes de salida, accesibilidad WCAG 2.2 AA, privacidad híbrida con consentimiento y rechazo de flechas ambiguas. El objetivo no es maximizar transcripciones: es producir únicamente transcripciones fiables y accesibles.
 
 ## Decisiones arquitectónicas
 

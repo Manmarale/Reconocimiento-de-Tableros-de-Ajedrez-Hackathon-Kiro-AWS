@@ -1,0 +1,14 @@
+{
+  "name": "transcriptor-ajedrez-once",
+  "version": "1.0.0",
+  "description": "Transcriptor accesible de diagramas de ajedrez a Braille Unicode B8 y texto para lector de pantalla.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
